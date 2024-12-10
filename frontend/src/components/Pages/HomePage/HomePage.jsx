@@ -8,7 +8,7 @@ import Gallery from "../../Gallery/Gallery";
 
 const HomePage = () => {
     return (
-        <div className={style.home}>
+        <body>
             <title>Films - main</title>
             <meta property="og:title" content="Films - main"/>
             <Header/>
@@ -54,7 +54,7 @@ const HomePage = () => {
             ></Gallery>
 
             <Footer/>
-        </div>
+        </body>
     )
 };
 

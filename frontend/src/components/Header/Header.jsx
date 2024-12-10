@@ -27,9 +27,11 @@ const Header = () => {
                         <Link to="/movies" className={`${style.text} nav-link`}>Movies</Link>
                         <Link to="/" className={`${style.text} nav-link`}>Reviews</Link>
                     </div>
-                    <button className={`${style.button} start-button button`}>
-                        <span className={style.text17}>Buy a ticket</span>
-                    </button>
+                    <Link to="/ticket">
+                        <button className={`${style.button} start-button button`}>
+                            <span className={style.text17}>Buy a ticket</span>
+                        </button>
+                    </Link>
                 </div>
 
                 <div data-thq="thq-burger-menu" className={style.burgerMenu}>

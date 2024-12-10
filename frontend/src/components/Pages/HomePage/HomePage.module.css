@@ -8,9 +8,11 @@
     justify-content: space-between;
     align-content: center;
     background-color: var(--dl-color-gray-black);
+
 }
 
 .hero {
+    margin-top: -4em;
     width: 100%;
     display: flex;
     align-items: center;
