@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import HomePage from "./components/Pages/HomePage/HomePage"
 import Movies from "./components/Pages/Movies/Movies";
 import TicketBooking from "./components/Pages/TicketBooking/TicketBooking";
+import Movie from "./components/Pages/Movie/Movie";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -16,6 +17,7 @@ root.render(
                 <Route path="/" element={<HomePage />} />
                 <Route path="/movies" element={<Movies />} />
                 <Route path="/ticket" element={<TicketBooking />} />
+                <Route path="/movie" element={<Movie />} />
                 {/*    /!* <Route path="/about" element={<About />} /> *!/*/}
                 {/*    /!* <Route path="/contacts" element={<Contacts />} /> *!/*/}
             </Routes>
