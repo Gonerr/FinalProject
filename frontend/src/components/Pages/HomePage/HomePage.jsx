@@ -50,7 +50,7 @@ const HomePage = () => {
             <Gallery
                 text={"ALL MOVIES"}
                 content1={"Browse through a stunning collection of movie posters from various genres and eras. Find your favorites and get ready for an immersive cinema experience."}
-                heading1={"Explore Our Movie Gallery"}
+                heading1={"Explore Our movie.js Gallery"}
             ></Gallery>
 
             <Footer/>

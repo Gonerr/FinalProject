@@ -9,7 +9,7 @@ const Gallery = (props) => {
                 <div className={style.sectionTitle}>
                     <h2 className={`${style.text1} ${style.text6} thq-heading-2`}>
                         {props.heading1 ? props.heading1 : (
-                            "Explore Our Movie Gallery"
+                            "Explore Our movie.js Gallery"
                         )}
                     </h2>
                     <span className={`${style.text2} ${style.text5} thq-body-large`}>
@@ -74,16 +74,16 @@ const Gallery = (props) => {
 };
 
 Gallery.defaultProps = {
-    image3Alt: 'Movie Poster 3',
-    image7Alt: 'Movie Poster 7',
-    image1Alt: 'Movie Poster 1',
+    image3Alt: 'movie.js Poster 3',
+    image7Alt: 'movie.js Poster 7',
+    image1Alt: 'movie.js Poster 1',
     text: undefined,
-    image6Alt: 'Movie Poster 6',
+    image6Alt: 'movie.js Poster 6',
     content1: undefined,
-    image4Alt: 'Movie Poster 4',
-    image5Alt: 'Movie Poster 5',
+    image4Alt: 'movie.js Poster 4',
+    image5Alt: 'movie.js Poster 5',
     heading1: undefined,
-    image2Alt: 'Movie Poster 2',
+    image2Alt: 'movie.js Poster 2',
 }
 
 export default Gallery;
