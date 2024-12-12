@@ -1,10 +1,25 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import {useNavigate} from 'react-router-dom';
 import Header from "../../Header/Header";
 import Footer from "../../Footer/Footer";
 import style from './Movies.module.css'
 import Filter from "../../UI/Filter/Filter";
 
 const Movies = () => {
+    const navigate = useNavigate();
+    const handleMovieClick = (id) => {
+        navigate(`/movie/${id}`); // Переход на страницу фильма с передачей id
+    };
+    const [movies, setMovies] = useState([]);
+
+    useEffect(() => {
+        // Retrieve all movies
+        fetch('http://localhost:3000/api/movies')
+            .then(response => response.json())
+            .then(data => setMovies(data))
+            .catch(error => console.error('Error fetching movies:', error));
+        }, []);
+
     return (
         <body>
         <Header/>
@@ -24,63 +39,22 @@ const Movies = () => {
                             </svg>
                         </div>
                     </div>
-                    <div className={`${style.container15} thq-grid-4`}>
-                        <div className={style.container16}>
-                            <img
-                                alt="Movie Poster 1"
-                                src="https://images.unsplash.com/photo-1568038823761-6ce8e1e4334d?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTczMzUxNjg0NXw&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=1080"
-                                className={`${style.image1} thq-img-ratio-16-9`}
-                            />
-                        </div>
-                        <div className={style.container16}>
-                            <img
-                                alt="Movie Poster 2"
-                                src="https://images.unsplash.com/photo-1670203513741-d2c16938134d?ixid=M3w5MTMyMXwwfDF8c2VhcmNofDY3fHxtb3ZpZXxlbnwwfHx8fDE3MzM2MDkwODd8MA&amp;ixlib=rb-4.0.3&amp;w=600"
-                                className={`${style.image1} thq-img-ratio-16-9`}
-                            />
-                        </div>
-                        <div className={style.container16}>
-                            <img
-                                alt="Movie Poster 3"
-                                src="https://images.unsplash.com/photo-1724080466058-f709e0306a6d?ixid=M3w5MTMyMXwwfDF8c2VhcmNofDkxfHxtb3ZpZXxlbnwwfHx8fDE3MzM2MDkyMzF8MA&amp;ixlib=rb-4.0.3&amp;w=600"
-                                className={`${style.image1} thq-img-ratio-16-9`}
-                            />
-                        </div>
-                        <div className={style.container16}>
-                            <img
-                                alt="Movie Poster 4"
-                                src="https://images.unsplash.com/photo-1523207911345-32501502db22?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTczMzUxNjg0N3w&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=1080"
-                                className={`${style.image1} thq-img-ratio-16-9`}
-                            />
-                        </div>
-                        <div className={style.container16}>
-                            <img
-                                alt="Movie Poster 5"
-                                src="https://images.unsplash.com/photo-1711757779023-45febde655a9?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTczMzUxNjg0Nnw&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=1080"
-                                className={`${style.image1} thq-img-ratio-16-9`}
-                            />
-                        </div>
-                        <div className={style.container16}>
-                            <img
-                                alt="Movie Poster 6"
-                                src="https://images.unsplash.com/photo-1625841325387-2ccd4a7bc442?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTczMzUxNjg0N3w&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=1080"
-                                className={`${style.image1} thq-img-ratio-16-9`}
-                            />
-                        </div>
-                        <div className={style.container16}>
-                            <img
-                                alt="Movie Poster 7"
-                                src="https://images.unsplash.com/photo-1692486407043-41d418e59680?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTczMzUxNjg0Nnw&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=1080"
-                                className={`${style.image1} thq-img-ratio-16-9`}
-                            />
-                        </div>
-                        <div className={style.container16}>
-                            <img
-                                alt="Movie Poster 8"
-                                src="https://images.unsplash.com/photo-1639179084000-9863c6581bba?ixid=M3w5MTMyMXwwfDF8c2VhcmNofDEwM3x8bW92aWV8ZW58MHx8fHwxNzMzNjA5MjQ2fDA&amp;ixlib=rb-4.0.3&amp;w=600"
-                                className={`${style.image1} thq-img-ratio-16-9`}
-                            />
-                        </div>
+                    <div className={`${style.listOfMovies} thq-grid-4`}>
+                        {movies.map(movie => (
+                            // При нажатии на постер - переход на страницу movie
+                            <div key={movie._id} className={style.movie}
+                                 onClick={() =>
+                                     handleMovieClick(movie._id)
+                            }>
+                                <img
+                                    alt={movie.title}
+                                    src={movie.poster}
+                                    className={`${style.image} thq-img-ratio-16-9`}
+                                />
+                                {/*Появление названия фильма*/}
+                                <div className={style.movieTitle}>{movie.title}</div>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>

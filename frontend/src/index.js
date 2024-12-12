@@ -17,7 +17,7 @@ root.render(
                 <Route path="/" element={<HomePage />} />
                 <Route path="/movies" element={<Movies />} />
                 <Route path="/ticket" element={<TicketBooking />} />
-                <Route path="/movie" element={<Movie />} />
+                <Route path="/movie/:id" element={<Movie />} />
                 {/*    /!* <Route path="/about" element={<About />} /> *!/*/}
                 {/*    /!* <Route path="/contacts" element={<Contacts />} /> *!/*/}
             </Routes>

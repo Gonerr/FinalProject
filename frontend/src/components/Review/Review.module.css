@@ -1,8 +1,35 @@
 .card {
+    border: solid;
     border-color: var(--dl-color-danger-300);
     border-width: 1px;
+    gap:1em;
+    max-width: 500px;
+}
+.top{
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+    width: 100%;
+}
+.container2{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    width: 100%;
+}
+.date{
+    font-weight: 300;
+    font-size: 0.7em;
 }
 
+
+.container3{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
 .avatar {
     gap: var(--dl-space-space-unit);
     display: flex;
@@ -29,7 +56,7 @@
 }
 .rating {
     fill: var(--dl-color-gray-white);
-    color: var(--dl-color-gray-white);
+    color: var(--dl-color-danger-500);
 }
 .text {
     fill: var(--dl-color-gray-white);

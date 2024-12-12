@@ -5,7 +5,10 @@ const movieSchema = new mongoose.Schema({
     genre: String,
     year: Number,
     duration: Number,
-    rating: Number
+    rating: Number,
+    poster: { type: String, required: true },
+    director: String,
+    description: String
 });
 
 module.exports = mongoose.model('movies', movieSchema);
