@@ -28,6 +28,47 @@ app.get('/api/movies', async (req, res) => {
     }
 });
 
+// Get top grossing movies
+// http://localhost:3000/api/movies/top-grossing
+app.get('/api/movies/top-grossing', async (req, res) => {
+    try {
+        const result = await Ticket.aggregate([
+            {
+                $lookup: {
+                    from: "movies",
+                    localField: "movie",
+                    foreignField: "_id",
+                    as: "movieDetails"
+                }
+            },
+            {
+                $unwind: "$movieDetails"
+            },
+            {
+                $group: {
+                    _id: "$movie",
+                    title: { $first: "$movieDetails.title" },
+                    rating: { $first: "$movieDetails.rating" },
+                    totalRevenue: { $sum: "$totalPrice" }, 
+                    totalTickets: { $sum: "$numTickets" },
+                    averagePrice: { $avg: "$totalPrice" }
+                }
+            },
+            {
+                $match: { totalRevenue: { $gt: 0 } }
+            },
+            {
+                $sort: { totalRevenue: -1 }
+            }
+        ]);
+
+        res.json(result);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
+
 // Retrieving a movie by id
 // http://localhost:3000/api/movies
 app.get('/api/movies/:id', async (req, res) => {
@@ -109,7 +150,6 @@ app.post('/api/tickets', async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 });
-
 
 
 app.listen(3000, () => {

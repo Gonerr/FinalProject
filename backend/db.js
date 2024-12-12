@@ -3,10 +3,7 @@ const mongoose = require('mongoose');
 const connectDB = async () => {
     const DATABASE_URL = 'mongodb+srv://AdminDB:passwordDB@cluster0.flonx.mongodb.net/WebTrain?retryWrites=true&w=majority&appName=Cluster0';
     try {
-        await mongoose.connect(DATABASE_URL, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-        });
+        await mongoose.connect(DATABASE_URL);
         console.log('MongoDB connected successfully');
     } catch (error) {
         console.error('MongoDB connection error:', error);
