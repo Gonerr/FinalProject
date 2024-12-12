@@ -7,7 +7,8 @@
     align-items: center;
     flex-shrink: 0;
     flex-direction: column;
-
+    align-self: center;
+    max-width: 1400px;
 }
 .maxWidth {
     gap: var(--dl-space-space-threeunits);

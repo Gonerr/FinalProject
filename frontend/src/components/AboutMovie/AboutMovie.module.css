@@ -9,12 +9,12 @@
     display: flex;
     align-items: center;
 }
-.container11 {
+.poster {
     flex: 2;
     height: 600px;
     overflow: hidden;
-    max-width: auto;
-    max-height: auto;
+    max-width: 400px;
+    max-height: 700px;
     background-size: cover;
     background-image: url("https://images.unsplash.com/photo-1648700231913-ad061d9b3ec9?ixid=M3w5MTMyMXwwfDF8c2VhcmNofDExfHxyZWR8ZW58MHx8fHwxNzMzNjA5MzExfDA&ixlib=rb-4.0.3&w=1400");
 }
@@ -30,23 +30,25 @@
     fill: var(--dl-color-danger-500);
     color: var(--dl-color-danger-500);
     font-family: "Noto Sans";
+    margin:0;
 }
 .text11 {
     fill: var(--dl-color-gray-white);
     color: var(--dl-color-gray-white);
     font-family: "Noto Sans";
-    margin-bottom: var(--dl-space-space-threeunits);
+    margin-bottom: var(--dl-space-space-twounits);
+    margin-top: -10px;
 }
 .container13 {
     width: 100%;
     margin-bottom: var(--dl-space-space-oneandhalfunits);
 }
-.container14 {
+.containerField {
     width: 100%;
     height: 100%;
     align-items: flex-start;
 }
-.text12 {
+.title {
     fill: var(--dl-color-danger-500);
     color: var(--dl-color-danger-500);
     font-size: 2rem;
@@ -54,37 +56,20 @@
     font-family: "Noto Sans";
     font-weight: 600;
     margin-bottom: var(--dl-space-space-unit);
+    margin-top: 0;
 }
-.text13 {
+.underTitle {
     fill: var(--dl-color-gray-white);
     color: var(--dl-color-gray-white);
     margin-top: 0px;
     margin-bottom: 0px;
+    font-size: 1.2em;
 }
-.container15 {
-    width: 100%;
-    height: 100%;
-    align-items: flex-start;
-}
-.text14 {
-    fill: var(--dl-color-danger-500);
-    color: var(--dl-color-danger-500);
-    font-size: 2rem;
-    font-style: normal;
-    font-family: "Noto Sans";
-    font-weight: 600;
-    margin-bottom: var(--dl-space-space-unit);
-}
-.text15 {
-    fill: var(--dl-color-gray-white);
-    color: var(--dl-color-gray-white);
-}
-.container16 {
-    width: 100%;
-}
+
 .container17 {
     width: 100%;
     height: 100%;
+    max-width: 700px;
     align-items: flex-start;
     margin-bottom: var(--dl-space-space-oneandhalfunits);
 }
@@ -92,10 +77,13 @@
     fill: var(--dl-color-danger-500);
     color: var(--dl-color-danger-500);
     font-family: "Noto Sans";
+    margin:0;
 }
-.text17 {
+.description {
     fill: var(--dl-color-gray-white);
     color: var(--dl-color-gray-white);
+    font-size: 1.2em;
+    line-height: 1.6em;
 }
 .container18 {
     width: 100%;
@@ -105,15 +93,7 @@
     height: 100%;
     align-items: flex-start;
 }
-.text18 {
-    fill: var(--dl-color-danger-500);
-    color: var(--dl-color-danger-500);
-    font-family: "Noto Sans";
-}
-.text19 {
-    fill: var(--dl-color-gray-white);
-    color: var(--dl-color-gray-white);
-}
+
 .container20 {
     gap: var(--dl-space-space-fourunits);
     width: 100%;
@@ -124,7 +104,7 @@
     justify-content: flex-start;
 }
 .button1 {
-    width: 40%;
+    width: 100%;
     padding-top: var(--dl-space-space-tenunit);
     border-color: var(--dl-color-danger-500);
     border-width: 1px;
@@ -135,14 +115,17 @@
 }
 .text20 {
     color: rgb(255, 255, 255);
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-family: "Noto Sans";
     font-weight: 400;
     text-transform: uppercase;
 }
-.button2 {
+.link{
     width: 40%;
+}
+.button2 {
+    width: 100%;
     padding-top: var(--dl-space-space-tenunit);
     border-color: var(--dl-color-danger-500);
     border-width: 1px;
@@ -154,7 +137,7 @@
 .text21 {
     fill: var(--dl-color-danger-500);
     color: var(--dl-color-danger-500);
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-family: "Noto Sans";
     font-weight: 400;
@@ -167,7 +150,7 @@
         align-items: flex-start;
         flex-direction: row;
     }
-    .container11 {
+    .poster {
         width: 100%;
         max-width: 100%;
     }
@@ -202,7 +185,7 @@
     .maxWidth {
         flex-direction: column;
     }
-    .container11 {
+    .poster {
         min-height: 600px;
     }
     .container12 {

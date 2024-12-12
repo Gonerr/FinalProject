@@ -22,7 +22,7 @@ body {
   flex-direction: column;
   justify-content: space-between;
   min-height: 100vh;
-
+  align-content: center;
 }
 
 :root {
@@ -327,7 +327,6 @@ body {
   border-radius: 50%;
 }
 .thq-section-padding {
-  width: 100%;
   display: flex;
   padding: var(--dl-space-space-fiveunits);
   position: relative;
