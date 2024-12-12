@@ -1,5 +1,6 @@
 import React from 'react';
 import style from './Gallery.module.css'
+import {Link} from "react-router-dom";
 
 
 const Gallery = (props) => {
@@ -9,7 +10,7 @@ const Gallery = (props) => {
                 <div className={style.sectionTitle}>
                     <h2 className={`${style.text1} ${style.text6} thq-heading-2`}>
                         {props.heading1 ? props.heading1 : (
-                            "Explore Our movie.js Gallery"
+                            "Explore Our movie Gallery"
                         )}
                     </h2>
                     <span className={`${style.text2} ${style.text5} thq-body-large`}>
@@ -38,22 +39,24 @@ const Gallery = (props) => {
                                 src="https://images.kinorium.com/movie/poster/472809/w1500_44943050.jpg"
                                 className={`${style.image3} thq-img-ratio-4-3`}
                             />
+                            <Link to={"/movies"} className={style.linkB}>
                             <button className={`${style.button} start-button button`}>
-                <span className={style.text3}>
-                  {props.text ? props.text : ("Buy a ticket")}
-                </span>
-                    </button>
-                    <img
-                        alt={props.image4Alt}
-                        src="https://avatars.dzeninfra.ru/get-zen_doc/751940/pub_5e7d004d6c402b45fcb1649d_5e7d01918b63b9743c9ae4df/scale_1200"
-                        className={`${style.image4} thq-img-ratio-1-1`}
-                    />
-                    <img
-                        alt={props.image5Alt}
-                        src="https://cdn1.ozone.ru/s3/multimedia-t/6292258685.jpg"
-                        className={`${style.image5} thq-img-ratio-4-3`}
-                    />
-                </div>
+                                <span className={style.text3}>
+                                  {props.text ? props.text : ("Buy a ticket")}
+                                </span>
+                            </button>
+                            </Link>
+                            <img
+                                alt={props.image4Alt}
+                                src="https://avatars.dzeninfra.ru/get-zen_doc/751940/pub_5e7d004d6c402b45fcb1649d_5e7d01918b63b9743c9ae4df/scale_1200"
+                                className={`${style.image4} thq-img-ratio-1-1`}
+                            />
+                            <img
+                                alt={props.image5Alt}
+                                src="https://cdn1.ozone.ru/s3/multimedia-t/6292258685.jpg"
+                                className={`${style.image5} thq-img-ratio-4-3`}
+                            />
+                        </div>
                         <div className={style.container4}>
                             <img
                                 alt={props.image6Alt}

@@ -57,7 +57,7 @@ const AboutMovie = ({movie}) => {
 
                     {/*TODO взаимодействие с кнопками*/}
                     <div className={style.container20}>
-                        <Link to={"/ticket"} className={style.link}>
+                        <Link to={`/ticket?id=${movie._id}`} className={style.link}>
                             <button className={`${style.button1} start-button button`}>
                               <span className={style.text20}>Buy a ticket </span>
                             </button>

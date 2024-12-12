@@ -4,6 +4,7 @@
     align-items: center;
     flex-direction: column;
     padding: 5em;
+    flex: 1;
 }
 .text1 {
     fill: var(--dl-color-gray-white);
@@ -71,6 +72,14 @@
     border-color: var(--dl-color-danger-500);
     background-color: transparent;
 }
+
+.select option {
+    background-color: #000;
+    color: var(--dl-color-danger-500);
+    border-radius: var(--dl-radius-radius-radius8);
+    text-align: center;
+}
+
 .input3 {
     gap: 8px;
     display: flex;
@@ -93,11 +102,25 @@
     background-color: var(--dl-color-danger-300);
 }
 .buttontext{
-    font-weight: 600;
-    font-size: 1.2em;
+    font-weight: 400;
+    font-size: 1.1em;
     text-transform: uppercase;
     letter-spacing: 1px;
     line-height: 1.5em;
+}
+.sendtext{
+    font-weight: 400;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.5em;
+    text-align: center;
+    width: 100%;
+    color:  var(--dl-color-danger-300);
+    text-shadow:
+            0 0 7px var(--dl-color-danger-500),
+            0 0 10px var(--dl-color-danger-500),
+            0 0 41px #fff;
 }
 .text4 {
     display: inline-block;

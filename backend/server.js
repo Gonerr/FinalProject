@@ -66,6 +66,51 @@ app.get('/api/reviews', async (req, res) => {
     }
 });
 
+// Add a new review
+app.post('/api/reviews', async (req, res) => {
+    const { filmId, source, reviewText, rating, avatar, reviewDate } = req.body;
+
+    if (!filmId || !source || !reviewText || !rating || !avatar || !reviewDate) {
+        return res.status(400).json({ message: 'All fields are required' });
+    }
+
+    const newReview = new Review(req.body);
+
+    try {
+        const savedReview = await newReview.save();
+        res.status(201).json(savedReview);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
+// Add a new ticket
+app.post('/api/tickets', async (req, res) => {
+    const { movieId, date, time, name, email, numTickets, totalPrice } = req.body;
+
+    if (!movieId || !date || !time || !name || !email || !numTickets || !totalPrice) {
+        return res.status(400).json({ message: 'All fields are required' });
+    }
+
+    const newTicket = new Ticket({
+        movie: new mongoose.Types.ObjectId(movieId),
+        date,
+        time,
+        name,
+        email,
+        numTickets,
+        totalPrice
+    });
+
+    try {
+        const savedTicket = await newTicket.save();
+        res.status(201).json(savedTicket);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
+
 
 app.listen(3000, () => {
     console.log('Server is running on port 3000');
