@@ -408,6 +408,7 @@
         min-width: auto;
         padding-top: var(--dl-space-space-tenunit);
         padding-bottom: var(--dl-space-space-tenunit);
+        margin: 0;
     }
     .text17 {
         width: 100%;
