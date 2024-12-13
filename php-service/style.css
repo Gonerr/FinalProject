@@ -1,0 +1,115 @@
+:root {
+    --primary-color: #BF2626;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: black;
+    color: white;
+}
+
+header {
+    background-color: var(--primary-color);
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px white;
+}
+
+h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+h2 {
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+    margin-top: 30px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+li {
+    flex: 1 1 calc(45% - 20px);
+    margin-bottom: 20px;
+}
+
+.movie-card {
+    background: black;
+    border: 1px solid var(--primary-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 4px var(--primary-color);
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    max-width: 30%;
+}
+
+.movie-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px var(--primary-color);
+}
+
+.movie-card h3 {
+    background-color: var(--primary-color);
+    color: white;
+    margin: 0;
+    padding: 10px;
+    font-size: 1.5em;
+}
+
+.movie-card p {
+    margin: 10px;
+    font-size: 1em;
+    line-height: 1.5;
+}
+
+li strong {
+    font-size: 1.2em;
+    color: var(--primary-color);
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.search-form {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+button,
+input, 
+input:active{
+    background-color: transparent;
+    border-color: var(--primary-color);
+    margin-left: 20px;
+    border-radius: 24px;
+    color: white;
+    padding: 10px 20px;
+}
+
+.review {
+    border: 1px solid var(--primary-color);
+    box-shadow: 0 4px 4px var(--primary-color);
+    border-radius: 8px;
+    max-width: 30%;
+    padding: 5px 15px;
+}
