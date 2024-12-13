@@ -2,6 +2,7 @@
 // Адреса для получения данных
 $moviesUrl = 'http://localhost:3000/api/movies';
 $topMoviesUrl = 'http://localhost:3000/api/movies/top-grossing';
+$reviewsUrl = 'http://localhost:3000/api/movies/%s/reviews';
 
 // Получаем данные через HTTP-запросы
 $moviesResponse = file_get_contents($moviesUrl);
@@ -15,6 +16,50 @@ if ($movies === null || $topMovies === null) {
     echo "Ошибка при получении данных.";
     exit;
 }
+
+// Обработка формы
+$reviews = [];
+$searchTitle = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['movie_title'])) {
+    $searchTitle = trim($_POST['movie_title']);
+
+    // Ищем фильм по названию
+    $movie = array_filter($movies, function ($m) use ($searchTitle) {
+        return stripos($m['title'], $searchTitle) !== false; // Поиск подстроки
+    });
+
+    if (!empty($movie)) {
+        $movie = reset($movie); // Получаем первый найденный фильм
+        $movieId = $movie['_id'];
+
+        // Настройка HTTP-контекста
+        $context = stream_context_create([
+            'http' => [
+                'method' => 'GET',
+                'ignore_errors' => true, // Получаем контент даже при ошибках
+            ],
+        ]);
+
+        // Выполняем запрос к API отзывов
+        $reviewsResponse = file_get_contents(sprintf($reviewsUrl, $movieId), false, $context);
+
+        // Проверяем код ответа
+        $http_response_header_code = explode(' ', $http_response_header[0])[1];
+        if ($http_response_header_code == 404) {
+            $reviews = []; // Если отзывов нет, устанавливаем пустой массив
+        } else {
+            $reviews = json_decode($reviewsResponse, true);
+        }
+
+        if ($reviews === null) {
+            echo "Ошибка при получении отзывов.";
+            exit;
+        }
+    } else {
+        $reviews = null; // Фильм не найден
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -23,96 +68,8 @@ if ($movies === null || $topMovies === null) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Фильмы</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
-            color: #333;
-        }
-
-        header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        h1 {
-            margin: 0;
-            font-size: 2.5em;
-        }
-
-        h2 {
-            color: #4CAF50;
-            border-bottom: 2px solid #4CAF50;
-            padding-bottom: 5px;
-            margin-bottom: 20px;
-            margin-top: 30px;
-        }
-
-        ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        li {
-            flex: 1 1 calc(45% - 20px);
-            margin-bottom: 20px;
-            max-width: 45%;
-        }
-
-        .movie-card {
-            background: white;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .movie-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-        }
-
-        .movie-card h3 {
-            background-color: #4CAF50;
-            color: white;
-            margin: 0;
-            padding: 10px;
-            font-size: 1.5em;
-        }
-
-        .movie-card p {
-            margin: 10px;
-            font-size: 1em;
-            line-height: 1.5;
-        }
-
-        li strong {
-            font-size: 1.2em;
-            color: #4CAF50;
-        }
-
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-    </style>
-
 </head>
 
 <body>
@@ -141,6 +98,32 @@ if ($movies === null || $topMovies === null) {
             </li>
         <?php endforeach; ?>
     </ul>
+
+    <h2>Поиск отзывов по названию фильма</h2>
+    <form class="search-form" method="POST">
+        <label for="movie_title">Введите название фильма:</label>
+        <input type="text" id="movie_title" name="movie_title" value="<?php echo htmlspecialchars($searchTitle); ?>" required>
+        <button type="submit">Найти отзывы</button>
+    </form>
+
+    <?php if ($_SERVER['REQUEST_METHOD'] === 'POST'): ?>
+        <?php if ($reviews === null): ?>
+            <p>Фильм с названием "<?php echo htmlspecialchars($searchTitle); ?>" не найден.</p>
+        <?php elseif (empty($reviews)): ?>
+            <p>Для фильма "<?php echo htmlspecialchars($searchTitle); ?>" нет отзывов.</p>
+        <?php else: ?>
+            <h3>Отзывы к фильму "<?php echo htmlspecialchars($searchTitle); ?>"</h3>
+            <ul>
+                <?php foreach ($reviews as $review): ?>
+                    <li class="review">
+                        <p><strong>Автор:</strong> <?php echo htmlspecialchars($review['source']); ?></p>
+                        <p><strong>Отзыв:</strong> <?php echo htmlspecialchars($review['reviewText']); ?></p>
+                        <p><strong>Дата:</strong> <?php echo htmlspecialchars($review['reviewDate']); ?></p>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        <?php endif; ?>
+    <?php endif; ?>
 </body>
 
 </html>
