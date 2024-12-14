@@ -8,11 +8,12 @@ const Review = require('./models/review'); // Импортируем модел�
 
 const app = express();
 
-app.use(cors({
-    origin: ['http://localhost:3000', 'http://localhost:3001'],
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type']
-}));
+// app.use(cors({
+//     origin: ['http://localhost:3000', 'http://localhost:3001', 'http://localhost:8081', 'exp://192.168.1.131:8081'],
+//     methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//     allowedHeaders: ['Content-Type']
+// }));
+app.use(cors());
 app.use(express.json());
 // Database connection
 connectDB();
