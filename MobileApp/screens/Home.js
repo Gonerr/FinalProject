@@ -1,9 +1,13 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native';
+import Gallery from "../components/Gallery";
+import Header from "../components/Header";
 
 const Home = () => {
     return (
         <ScrollView contentContainerStyle={styles.container}>
+            <Header/>
+
             {/* Hero Section */}
             <View style={styles.hero}>
                 <Image
@@ -30,6 +34,7 @@ const Home = () => {
                 </Text>
             </View>
 
+            <Gallery/>
         </ScrollView>
     );
 };
@@ -72,8 +77,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         color: 'rgb(255, 255, 255)',
         textAlign: 'left',
-        marginTop: 16,
-        textAlign: 'left',
+        marginTop: 16
     },
     about: {
         flexDirection: 'column',
