@@ -1,12 +1,10 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native';
 import Gallery from "../components/Gallery";
-import Header from "../components/Header";
 
 const Home = () => {
     return (
         <ScrollView contentContainerStyle={styles.container}>
-            <Header/>
 
             {/* Hero Section */}
             <View style={styles.hero}>

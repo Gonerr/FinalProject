@@ -13,6 +13,8 @@ const app = express();
 //     methods: ['GET', 'POST', 'PUT', 'DELETE'],
 //     allowedHeaders: ['Content-Type']
 // }));
+
+// For all
 app.use(cors());
 app.use(express.json());
 // Database connection
