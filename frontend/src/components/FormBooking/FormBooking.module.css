@@ -4,16 +4,19 @@
     position: relative;
     align-items: flex-start;
     flex-direction: column;
-    background-color: var(--dl-color-gray-black);
+    background-size: cover;
+    background-image: url("https://images.unsplash.com/photo-1668890094751-6986d0ca9dfc?ixid=M3w5MTMyMXwwfDF8c2VhcmNofDM1fHxNb3ZpZSUyMHRoZWF0ZXJ8ZW58MHx8fHwxNzMzNDI2NDc5fDA&ixlib=rb-4.0.3&w=1500");
+    background-position: center;
     margin-top: -4em;
 }
 .purchaseTicket {
+    background-color: var(--dl-color-gray-black);
     flex: 0 0 auto;
     width: 70%;
     height: auto;
     margin: var(--dl-space-space-fiveunits);
     display: flex;
-    padding: var(--dl-space-space-fourunits);
+    padding: var(--dl-space-space-fourunits) var(--dl-space-space-tenunit);
     align-self: center;
     align-items: center;
     border: solid var(--dl-color-danger-500) 1px;
@@ -49,6 +52,7 @@
     fill: var(--dl-color-gray-white);
     color: var(--dl-color-gray-white);
     width: 500px;
+    font-size: 1em;
     border-color: var(--dl-color-danger-500);
     background-color: transparent;
 }
@@ -82,6 +86,7 @@
     fill: var(--dl-color-gray-white);
     color: var(--dl-color-gray-white);
     width: 80%;
+    font-size: 1em;
     min-width: 150px;
     border-color: var(--dl-color-danger-500);
     background-color: transparent;
@@ -107,6 +112,7 @@
     fill: var(--dl-color-gray-white);
     color: var(--dl-color-gray-white);
     width: auto;
+    font-size: 1em;
     min-width: 150px;
     border-color: var(--dl-color-danger-500);
     background-color: transparent;
@@ -131,6 +137,7 @@
     fill: var(--dl-color-gray-white);
     color: var(--dl-color-gray-white);
     width: 65%;
+    font-size: 1em;
     padding-top: var(--dl-space-space-halfunit);
     border-color: var(--dl-color-danger-500);
     padding-bottom: var(--dl-space-space-halfunit);
@@ -156,6 +163,7 @@
     fill: var(--dl-color-gray-white);
     color: var(--dl-color-gray-white);
     width: 65%;
+    font-size: 1em;
     padding-top: var(--dl-space-space-halfunit);
     border-color: var(--dl-color-danger-500);
     padding-bottom: var(--dl-space-space-halfunit);
@@ -195,6 +203,7 @@
     border-color: var(--dl-color-danger-500);
     background-color: transparent;
     max-height: 3em;
+    font-size: 1em;
     align-self: center;
     margin-left: 2em;
 }
@@ -206,6 +215,19 @@
     font-weight: 500;
     text-transform: uppercase;
 }
+.select1 option {
+    background-color: #000;
+    color: var(--dl-color-danger-500);
+    border-radius: var(--dl-radius-radius-radius8);
+    text-align: center;
+}
+.select2 option {
+    background-color: #000;
+    color: var(--dl-color-danger-500);
+    border-radius: var(--dl-radius-radius-radius8);
+    text-align: center;
+}
+
 .button {
     width: 100%;
     padding-top: var(--dl-space-space-unit);
@@ -234,6 +256,45 @@
 .text22 {
     color: var(--dl-color-danger-700);
 }
+.sendtext{
+    font-weight: 400;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.5em;
+    text-align: center;
+    width: 80%;
+    color:  #fff;
+    align-self: center;
+    text-shadow:
+            0 0 7px var(--dl-color-danger-500),
+            0 0 10px var(--dl-color-danger-500),
+            0 0 41px var(--dl-color-danger-500);
+}
+
+.link{
+    width: 100%;
+}
+.button2 {
+    width: 100%;
+    padding-top: var(--dl-space-space-tenunit);
+    border-color: var(--dl-color-danger-500);
+    border-width: 1px;
+    padding-left: var(--dl-space-space-twounits);
+    padding-right: var(--dl-space-space-twounits);
+    padding-bottom: var(--dl-space-space-tenunit);
+    background-color: transparent;
+}
+.text21 {
+    fill: var(--dl-color-danger-500);
+    color: var(--dl-color-danger-500);
+    font-size: 16px;
+    font-style: normal;
+    font-family: "Noto Sans";
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
 @media(max-width: 991px) {
     .container2 {
         gap: var(--dl-space-space-oneandhalfunits);
@@ -347,6 +408,7 @@
         min-width: auto;
         padding-top: var(--dl-space-space-tenunit);
         padding-bottom: var(--dl-space-space-tenunit);
+        margin: 0;
     }
     .text17 {
         width: 100%;

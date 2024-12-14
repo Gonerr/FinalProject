@@ -8,6 +8,7 @@ const movieSchema = new mongoose.Schema({
     rating: Number,
     poster: { type: String, required: true },
     director: String,
+    price: Number,
     description: String
 });
 

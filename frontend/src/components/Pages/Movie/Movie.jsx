@@ -27,6 +27,7 @@ const Movie = () => {
                 <div className="aboutmovie">
                     <ContactForm
                         rootClassName="rootClassName"
+                        id={id}
                     />
                     <div className="aboutmoviepicture"></div>
                 </div>

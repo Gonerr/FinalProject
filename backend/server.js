@@ -28,6 +28,47 @@ app.get('/api/movies', async (req, res) => {
     }
 });
 
+// Get top grossing movies
+// http://localhost:3000/api/movies/top-grossing
+app.get('/api/movies/top-grossing', async (req, res) => {
+    try {
+        const result = await Ticket.aggregate([
+            {
+                $lookup: {
+                    from: "movies",
+                    localField: "movie",
+                    foreignField: "_id",
+                    as: "movieDetails"
+                }
+            },
+            {
+                $unwind: "$movieDetails"
+            },
+            {
+                $group: {
+                    _id: "$movie",
+                    title: { $first: "$movieDetails.title" },
+                    rating: { $first: "$movieDetails.rating" },
+                    totalRevenue: { $sum: "$totalPrice" }, 
+                    totalTickets: { $sum: "$numTickets" },
+                    averagePrice: { $avg: "$totalPrice" }
+                }
+            },
+            {
+                $match: { totalRevenue: { $gt: 0 } }
+            },
+            {
+                $sort: { totalRevenue: -1 }
+            }
+        ]);
+
+        res.json(result);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
+
 // Retrieving a movie by id
 // http://localhost:3000/api/movies
 app.get('/api/movies/:id', async (req, res) => {
@@ -61,6 +102,50 @@ app.get('/api/reviews', async (req, res) => {
     try {
         const reviews = await Review.find();
         res.json(reviews);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
+// Add a new review
+app.post('/api/reviews', async (req, res) => {
+    const { filmId, source, reviewText, rating, avatar, reviewDate } = req.body;
+
+    if (!filmId || !source || !reviewText || !rating || !avatar || !reviewDate) {
+        return res.status(400).json({ message: 'All fields are required' });
+    }
+
+    const newReview = new Review(req.body);
+
+    try {
+        const savedReview = await newReview.save();
+        res.status(201).json(savedReview);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
+// Add a new ticket
+app.post('/api/tickets', async (req, res) => {
+    const { movieId, date, time, name, email, numTickets, totalPrice } = req.body;
+
+    if (!movieId || !date || !time || !name || !email || !numTickets || !totalPrice) {
+        return res.status(400).json({ message: 'All fields are required' });
+    }
+
+    const newTicket = new Ticket({
+        movie: new mongoose.Types.ObjectId(movieId),
+        date,
+        time,
+        name,
+        email,
+        numTickets,
+        totalPrice
+    });
+
+    try {
+        const savedTicket = await newTicket.save();
+        res.status(201).json(savedTicket);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }

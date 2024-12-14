@@ -31,9 +31,11 @@ const HomePage = () => {
                             <h1 className={style.text23}>
                                 Your ultimate movie experience awaits
                             </h1>
+
                             <button className={`${style.button4} start-button button`}>
                                 <span className={style.text24}>Buy a ticket</span>
                             </button>
+
                         </div>
                         <span className={style.description2}>
                           Immerse yourself in the world of cinema with Films, a website
@@ -50,7 +52,7 @@ const HomePage = () => {
             <Gallery
                 text={"ALL MOVIES"}
                 content1={"Browse through a stunning collection of movie posters from various genres and eras. Find your favorites and get ready for an immersive cinema experience."}
-                heading1={"Explore Our movie.js Gallery"}
+                heading1={"Explore Our movie Gallery"}
             ></Gallery>
 
             <Footer/>

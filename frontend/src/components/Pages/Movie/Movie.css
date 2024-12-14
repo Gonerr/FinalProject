@@ -17,9 +17,12 @@
     align-items: center;
     justify-content: space-between;
 }
+.contactform{
+    flex: 2;
+}
 
 .movies{
-    margin-top: -5em;
+    margin-top: -2em;
 }
 
 @media(max-width: 767px) {
