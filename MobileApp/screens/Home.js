@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     subsubtitle: {
         fontSize: 18,
         fontWeight: 'normal',
-        color: 'rgb(225, 71, 71)',
+        color: 'rgb(191, 38, 38)',
         textTransform: 'uppercase',
         textAlign: 'center',
     },

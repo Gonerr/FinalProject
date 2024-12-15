@@ -50,13 +50,6 @@ const styles = StyleSheet.create({
         padding: 16,
         backgroundColor: '#000000',
     },
-    // header: {
-    //     fontSize: 30,
-    //     fontWeight: 'normal',
-    //     marginBottom: 16,
-    //     textAlign: 'center',
-    //     color: 'rgb(225, 71, 71)',
-    // },
     movieCard: {
         flex: 1,
         margin: 8,
